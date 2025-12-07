@@ -54,9 +54,7 @@
 ## Задание 2. Memcached
 
 Установите и запустите memcached.  
-Приведите скриншот systemctl status memcached, где будет видно, что memcached запущен.  
-
-Приведите ответ в свободной форме.  
+Приведите скриншот systemctl status memcached, где будет видно, что memcached запущен.    
 
 ## Решение 2
 
@@ -69,15 +67,43 @@ sudo systemctl status memcached
 
 ## Задание 3. Удаление по TTL в Memcached
 
-## Решение 3
-
 Запишите в memcached несколько ключей с любыми именами и значениями, для которых выставлен TTL 5.  
 
 Приведите скриншот, на котором видно, что спустя 5 секунд ключи удалились из базы.  
+
+## Решение 3
+
+telnet 127.0.0.1 11211  
+
+set key1 0 5 5  
+hello  
+set key2 0 5 5  
+world  
   
+![Задание 3](https://github.com/SKISHCHENKO/11-02-HW/blob/main/img/task3_1.png)
+
+На скриншоте видно вывод при записи на 60 секунд и при записи на 5 секунд. 
+
 ## Задание 4. Запись данных в Redis 
 
 Запишите в Redis несколько ключей с любыми именами и значениями.
 Через redis-cli достаньте все записанные ключи и значения из базы, приведите скриншот этой операции. 
 
 ## Решение 4  
+
+sudo apt update  
+sudo apt install -y redis-server  
+sudo systemctl status redis-server  
+redis-cli  
+
+SET name "Sergey"
+SET city "SPB"
+SET course "Netology"
+
+GET name
+GET city
+GET course
+
+MGET name city course
+
+![Задание 4](https://github.com/SKISHCHENKO/11-02-HW/blob/main/img/task4_1.png)
